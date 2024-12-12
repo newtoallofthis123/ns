@@ -6,11 +6,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormDescription, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { neon } from "@neondatabase/serverless";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { addUrl, getVersion } from "../actions";
+import { addUrl } from "../actions";
 
 export default function Short() {
     const formSchema = z.object({
@@ -48,7 +47,7 @@ export default function Short() {
         }
         const res = await addUrl(data.url, hash);
         if (res) {
-            setResult(`https://noobshort.vercel.app/${hash}`);
+            setResult(`https://u.noobscience.in/${hash}`);
         } else {
             setResult("An error occurred" + res);
         }
