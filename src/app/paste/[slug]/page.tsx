@@ -2,8 +2,9 @@ import { getPaste } from "@/app/actions";
 import CodeEditor from "@/components/custom/editor";
 import NavBar from "@/components/custom/nav";
 
-export default async function Paste({ params }: { params: { slug: string } }) {
-    const slug = params.slug;
+
+export default async function Paste({ params }: { params: Promise<{ slug: string }> }) {
+    const slug = (await params).slug;
     const pastes = await getPaste(slug);
     if (!pastes) {
         return new Response("Paste not found", {
