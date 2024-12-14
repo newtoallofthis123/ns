@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         const filename = data['filename']
         const content = data['content']
         const lang = data['lang']
-        const res = await addPaste(filename, content, lang)
+        const res = await addPaste(filename, lang, content)
         return new Response(JSON.stringify(res), {
             status: 200,
         })
