@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addUrl } from "../actions";
+import { generateHash } from "@/lib/hash";
 
 export default function Short() {
     const formSchema = z.object({
@@ -26,16 +27,6 @@ export default function Short() {
     })
 
     const [result, setResult] = useState<string>("");
-
-    function generateHash() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let hash = '';
-        for (let i = 0; i < 8; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            hash += characters[randomIndex];
-        }
-        return hash;
-    }
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
         let hash = data.hash as string;
